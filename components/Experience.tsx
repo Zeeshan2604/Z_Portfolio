@@ -2,52 +2,58 @@ import React from "react";
 
 import { workExperience } from "@/data";
 import { Button } from "./ui/MovingBorders";
+import { SectionBox } from "./AnimatedBackground";
+import { cn } from "@/lib/utils";
 
 const Experience = () => {
   return (
-    <div className="py-20 w-full">
-      <h1 className="heading">
-        My work<span className="text-purple"> experience</span>
-      </h1>
+    <SectionBox variant="purple">
+      <div className={cn(
+        "container mx-auto px-6 py-16   rounded-3xl border-2 border-purple-500/20 hover:border-purple-500/40 group/bento hover:shadow-xl transition-all duration-300 shadow-input dark:shadow-none justify-between flex flex-col space-y-4"
+        )} 
+        style={{
+          boxShadow: "0 0 15px rgba(203, 172, 249, 0.1)",
+        }}>
+        <h1 className="heading mb-12">
+          My work<span className="text-purple"> experience</span>
+        </h1>
 
-      <div className="w-full mt-12 grid lg:grid-cols-4 grid-cols-1 gap-10">
-        {workExperience.map((card) => (
-          <Button
-            key={card.id}
-            //   random duration will be fun , I think , may be not
-            duration={Math.floor(Math.random() * 10000) + 10000}
-            borderRadius="1.75rem"
-            style={{
-              //   add these two
-              //   you can generate the color from here https://cssgradient.io/
-              background: "rgb(4,7,29)",
-              backgroundColor:
-                "linear-gradient(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)",
-              // add this border radius to make it more rounded so that the moving border is more realistic
-              borderRadius: `calc(1.75rem* 0.96)`,
-            }}
-            // remove bg-white dark:bg-slate-900
-            className="flex-1 text-black dark:text-white border-neutral-200 dark:border-slate-800"
-          >
-            <div className="flex lg:flex-row flex-col lg:items-center p-3 py-6 md:p-5 lg:p-10 gap-2">
-              <img
-                src={card.thumbnail}
-                alt={card.thumbnail}
-                className="lg:w-32 md:w-20 w-16"
-              />
-              <div className="lg:ms-5">
-                <h1 className="text-start text-xl md:text-2xl font-bold">
-                  {card.title}
-                </h1>
-                <p className="text-start text-white-100 mt-3 font-semibold">
-                  {card.desc}
-                </p>
+        <div className="w-full mt-8 grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-6">
+          {workExperience.map((card) => (
+            <Button
+              key={card.id}
+              duration={Math.floor(Math.random() * 10000) + 10000}
+              borderRadius="1.75rem"
+              style={{
+                background: "rgba(4,7,29,0.7)",
+                backdropFilter: "blur(8px)",
+                borderRadius: `calc(1.75rem* 0.96)`,
+                
+              }}
+              className="flex-1 text-black dark:text-white border-purple/30 hover:border-purple/60 transition-all duration-300"
+            >
+              <div className="flex flex-col items-center p-6 gap-4">
+                <div className="w-20 h-20 rounded-full bg-black/30 flex items-center justify-center p-2">
+                  <img
+                    src={card.thumbnail}
+                    alt={card.thumbnail}
+                    className="w-full object-contain"
+                  />
+                </div>
+                <div className="text-center">
+                  <h1 className="text-xl md:text-2xl font-bold mb-2">
+                    {card.title}
+                  </h1>
+                  <p className="text-white/80 font-medium">
+                    {card.desc}
+                  </p>
+                </div>
               </div>
-            </div>
-          </Button>
-        ))}
+            </Button>
+          ))}
+        </div>
       </div>
-    </div>
+    </SectionBox>
   );
 };
 

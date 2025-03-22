@@ -119,13 +119,21 @@ export function Globe({ globeConfig, data }: WorldProps) {
         isNaN(point.startLat) ||
         isNaN(point.startLng) ||
         isNaN(point.endLat) ||
-        isNaN(point.endLng)
+        isNaN(point.endLng) ||
+        !isFinite(point.startLat) ||
+        !isFinite(point.startLng) ||
+        !isFinite(point.endLat) ||
+        !isFinite(point.endLng) ||
+        point.startLat < -90 || point.startLat > 90 ||
+        point.endLat < -90 || point.endLat > 90 ||
+        point.startLng < -180 || point.startLng > 180 ||
+        point.endLng < -180 || point.endLng > 180
       ) {
         console.error("Invalid data point:", point);
-        return false; // Early exit if invalid data is found
+        return false;
       }
     }
-    return true; // All data points are valid
+    return true;
   }
   const _buildData = () => {
     if (!validateData(data)) return;
@@ -134,25 +142,34 @@ export function Globe({ globeConfig, data }: WorldProps) {
     for (let i = 0; i < arcs.length; i++) {
       const arc = arcs[i];
       const rgb = hexToRgb(arc.color) as { r: number; g: number; b: number };
-      // Ensure all coordinates are valid numbers
+      
+      // Ensure all coordinates are valid numbers and within valid ranges
       if (
         isNaN(arc.startLat) ||
         isNaN(arc.startLng) ||
         isNaN(arc.endLat) ||
-        isNaN(arc.endLng)
+        isNaN(arc.endLng) ||
+        arc.startLat < -90 || arc.startLat > 90 ||
+        arc.endLat < -90 || arc.endLat > 90 ||
+        arc.startLng < -180 || arc.startLng > 180 ||
+        arc.endLng < -180 || arc.endLng > 180
       ) {
         console.error("Invalid coordinates for data point:", arc);
         continue; // Skip this invalid point
       }
+
+      // Ensure arcAlt is a valid number
+      const arcAlt = typeof arc.arcAlt === 'number' && !isNaN(arc.arcAlt) ? arc.arcAlt : 0.1;
+
       points.push({
-        size: defaultProps.pointSize,
+        size: defaultProps.pointSize || 1,
         order: arc.order,
         color: (t: number) => `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${1 - t})`,
         lat: arc.startLat,
         lng: arc.startLng,
       });
       points.push({
-        size: defaultProps.pointSize,
+        size: defaultProps.pointSize || 1,
         order: arc.order,
         color: (t: number) => `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${1 - t})`,
         lat: arc.endLat,
@@ -175,6 +192,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
 
   useEffect(() => {
     if (globeRef.current && globeData) {
+      // Ensure the globe is properly initialized before setting data
       globeRef.current
         .hexPolygonsData(countries.features)
         .hexPolygonResolution(3)
@@ -182,51 +200,64 @@ export function Globe({ globeConfig, data }: WorldProps) {
         .showAtmosphere(defaultProps.showAtmosphere)
         .atmosphereColor(defaultProps.atmosphereColor)
         .atmosphereAltitude(defaultProps.atmosphereAltitude)
-        .hexPolygonColor(() => {
-          return defaultProps.polygonColor;
-        });
-      startAnimation();
+        .hexPolygonColor(() => defaultProps.polygonColor);
+
+      // Only start animation if we have valid data
+      if (validateData(data)) {
+        startAnimation();
+      }
     }
   }, [globeData]);
 
   const startAnimation = () => {
     if (!globeRef.current || !globeData) return;
-    if (!validateData(data)) return; // If invalid, exit early
-    globeRef.current
-      .arcsData(data)
-      .arcStartLat((d) => (d as { startLat: number }).startLat)
-      .arcStartLng((d) => (d as { startLng: number }).startLng)
-      .arcEndLat((d) => (d as { endLat: number }).endLat)
-      .arcEndLng((d) => (d as { endLng: number }).endLng)
-      .arcColor((e: any) => (e as { color: string }).color)
-      .arcAltitude((e) => {
-        return (e as { arcAlt: number }).arcAlt;
-      })
-      .arcStroke(() => {
-        return [0.32, 0.28, 0.3][Math.round(Math.random() * 2)];
-      })
-      .arcDashLength(defaultProps.arcLength)
-      .arcDashInitialGap((e) => (e as { order: number }).order)
-      .arcDashGap(15)
-      .arcDashAnimateTime(() => defaultProps.arcTime);
+    if (!validateData(data)) return;
 
-    globeRef.current
-      .pointsData(data)
-      .pointRadius((e) => (e as { size: number }).size * 2) // added
-      .pointColor((e) => (e as { color: string }).color)
-      .pointsMerge(true)
-      .pointAltitude(0.0)
-      .pointRadius(2)
-      .pointsTransitionDuration(0); // added
+    try {
+      // Setup arcs
+      globeRef.current
+        .arcsData(data)
+        .arcStartLat((d) => (d as { startLat: number }).startLat)
+        .arcStartLng((d) => (d as { startLng: number }).startLng)
+        .arcEndLat((d) => (d as { endLat: number }).endLat)
+        .arcEndLng((d) => (d as { endLng: number }).endLng)
+        .arcColor((e: any) => (e as { color: string }).color)
+        .arcAltitude((e) => {
+          const alt = (e as { arcAlt: number }).arcAlt;
+          return isNaN(alt) || !isFinite(alt) ? 0.1 : alt;
+        })
+        .arcStroke(() => {
+          return [0.32, 0.28, 0.3][Math.round(Math.random() * 2)];
+        })
+        .arcDashLength(defaultProps.arcLength)
+        .arcDashInitialGap((e) => (e as { order: number }).order)
+        .arcDashGap(15)
+        .arcDashAnimateTime(() => defaultProps.arcTime);
 
-    globeRef.current
-      .ringsData([])
-      .ringColor((e: any) => (t: any) => e.color(t))
-      .ringMaxRadius(defaultProps.maxRings)
-      .ringPropagationSpeed(RING_PROPAGATION_SPEED)
-      .ringRepeatPeriod(
-        (defaultProps.arcTime * defaultProps.arcLength) / defaultProps.rings
-      );
+      // Setup points
+      globeRef.current
+        .pointsData(globeData)
+        .pointRadius((e) => {
+          const size = (e as { size: number }).size * 2;
+          return isNaN(size) || !isFinite(size) ? 2 : size;
+        })
+        .pointColor((e) => (e as { color: (t: number) => string }).color(1))
+        .pointsMerge(true)
+        .pointAltitude(0.0)
+        .pointsTransitionDuration(0);
+
+      // Setup rings
+      globeRef.current
+        .ringsData([])
+        .ringColor((e: any) => (t: any) => e.color(t))
+        .ringMaxRadius(defaultProps.maxRings)
+        .ringPropagationSpeed(RING_PROPAGATION_SPEED)
+        .ringRepeatPeriod(
+          (defaultProps.arcTime * defaultProps.arcLength) / defaultProps.rings
+        );
+    } catch (error) {
+      console.error("Error in starting animation:", error);
+    }
   };
 
   useEffect(() => {

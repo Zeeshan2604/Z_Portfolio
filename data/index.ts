@@ -1,6 +1,6 @@
 export const navItems = [
     { name: "About", link: "#about" },
-    { name: "Resume", link: "https://drive.google.com/file/d/102lq9dewg9KnGqikMOK3eus3iwERQYwo/view?usp=drive_link" },
+    { name: "Resume", link: "https://drive.google.com/file/d/1aijbNGNopYKuRnfg4PRFMDloAe3wKKuf/view?usp=drive_link" },
     { name: "Projects", link: "#projects" },
     //{ name: "Testimonials", link: "#testimonials" },
     
@@ -12,7 +12,7 @@ export const navItems = [
       id: 1,
       title: "I prioritize open communication with my clients for the best quality results",
       description: "",
-      className: "lg:col-span-3 md:col-span-6 md:row-span-4 lg:min-h-[60vh]",
+      className: "lg:col-span-3 md:col-span-4 col-span-1 md:row-span-3 row-span-1 lg:min-h-[50vh] min-h-[30vh]",
       imgClassName: "w-full h-full",
       titleClassName: "justify-end",
       img: "/b1.svg",
@@ -20,9 +20,9 @@ export const navItems = [
     },
     {
       id: 2,
-      title: " Versatile, quick to adapt, and always ready for new challenges! ",
+      title: "Versatile, quick to adapt, and always ready for new challenges!",
       description: "",
-      className: "lg:col-span-2 md:col-span-3 md:row-span-2 min-h-[40vh] select-none",
+      className: "lg:col-span-2 md:col-span-2 col-span-1 md:row-span-2 row-span-1 lg:min-h-[50vh] min-h-[30vh] select-none",
       imgClassName: "",
       titleClassName: "justify-start",
       img: "",
@@ -32,40 +32,19 @@ export const navItems = [
       id: 3,
       title: "My Resume",
       description: "Are you hiring? Check out ",
-      className: "lg:col-span-2 md:col-span-3 md:row-span-2 flex",
+      className: "lg:col-span-2 md:col-span-2 col-span-1 md:row-span-1 row-span-1 flex lg:min-h-[25vh] min-h-[15vh]",
       imgClassName: "",
       titleClassName: "justify-end",
       img: "",
       spareImg: "",
     },
     {
-      id: 4,
-      title: "Tech enthusiast with a passion for development.",
-      description: "",
-      className: "lg:col-span-2 md:col-span-3 md:row-span-1",
-      imgClassName: "",
-      titleClassName: "justify-start",
-      img: "/grid.svg",
-      spareImg: "/b4.svg",
-    },
-  
-    {
-      id: 5,
-      title: "Clean Code and Modern Design",
-      description: "Passionate about transforming ideas into reality.",
-      className: "md:col-span-3 md:row-span-2",
-      imgClassName: "absolute right-0 bottom-0 md:w-96 w-60",
-      titleClassName: "justify-center md:justify-start lg:justify-center",
-      img: "/b5.svg",
-      spareImg: "/grid.svg",
-    },
-    {
       id: 6,
       title: "Do you want to start a project together?",
-      description: "",
-      className: "lg:col-span-2 md:col-span-3 md:row-span-1",
+      description: "Let's collaborate on your next big idea",
+      className: "lg:col-span-5 md:col-span-6 col-span-1 row-span-1 min-h-[20vh]",
       imgClassName: "",
-      titleClassName: "justify-center md:max-w-full max-w-60 text-center",
+      titleClassName: "justify-center text-center",
       img: "",
       spareImg: "",
     },
@@ -81,6 +60,16 @@ export const navItems = [
       iconLists: ["/science.png", "js.svg", "/tail.svg", "/mongo.svg", "/nodejs.svg"],
       link: "https://hir-ex-client.vercel.app/",
     },
+
+    {
+      id: 3,
+      title: "HotWheelsX",
+      des: "An Hotwheels web-app where you can view 3D models of Hotwheels in an immence environment",
+      img: "/hotwheels.png",
+      iconLists: ["/science.png","/nodejs.svg", "/tail.svg", "/mongo.svg","js.svg"],
+      link: "https://hotwheelsx-frontend.onrender.com/",
+    },
+
     {
       id: 2,
       title: "Tiera E-Commerce Website",
@@ -90,19 +79,11 @@ export const navItems = [
       link: "https://zeeshan2604.github.io/Tiera-E-Commerce-Website/",
       
     },
-    {
-      id: 3,
-      title: "HotWheelsX",
-      des: "An Hotwheels web-app where you can view 3D models of Hotwheels in an immence environment",
-      img: "/hotwheels.png",
-      iconLists: ["/science.png","/nodejs.svg", "/tail.svg", "/mongo.svg","js.svg"],
-      link: "https://github.com/Zeeshan2604/HotWheels_site",
-    },
   
     {
       id: 4,
       title: "Github",
-      des: "All of my Github projects that I have worked on",
+      des: "Visit my GitHub profile to explore all my projects, repositories, and contributions to open source",
       img: "/Mygithub.png",
       iconLists: ["/science.png",  "/tail.svg", "/supabase.png","/mui.svg"],
       link: "https://github.com/Zeeshan2604",
@@ -206,11 +187,11 @@ export const navItems = [
       img: "/git.svg",
       href: "https://github.com/Zeeshan2604",
     },
-    {
-      id: 2,
-      img: "/twit.svg",
-      href: " ",
-    },
+    // {
+    //   id: 2,
+    //   img: "/twit.svg",
+    //   href: " ",
+    // },
     {
       id: 3,
       img: "/link.svg",
