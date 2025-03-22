@@ -36,7 +36,7 @@ const Footer = () => {
           </h1>
           <p className="text-white/80 md:mt-8 my-8 text-center max-w-2xl text-lg">
             Ready to turn your vision into reality? With fresh skills and creative energy, 
-            I'm eager to make your next digital project shine!
+            I&apos;m eager to make your next digital project shine!
           </p>
           <a href="mailto:shaikh.zeeshan2604@gmail.com" className="mt-4">
             <MagicButton
