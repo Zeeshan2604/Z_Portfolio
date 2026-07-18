@@ -1,9 +1,8 @@
 export const navItems = [
     { name: "About", link: "#about" },
-    { name: "Resume", link: "https://drive.google.com/file/d/1AJptvqPP-nJJNMBVA79jpWTC34On9_Pn/view?usp=drive_link" },
+    { name: "Experience", link: "#experience" },
     { name: "Projects", link: "#projects" },
-    //{ name: "Testimonials", link: "#testimonials" },
-    
+    { name: "Resume", link: "https://drive.google.com/file/d/1AJptvqPP-nJJNMBVA79jpWTC34On9_Pn/view?usp=drive_link" },
     { name: "Contact", link: "#contact" },
   ];
   
@@ -64,7 +63,7 @@ export const navItems = [
     {
       id: 3,
       title: "HotWheelsX",
-      des: "An Hotwheels web-app where you can view 3D models of Hotwheels in an immence environment",
+      des: "A Hot Wheels web app where you can view 3D car models in an immersive environment",
       img: "/hotwheels.png",
       iconLists: ["/science.png","/nodejs.svg", "/tail.svg", "/mongo.svg","js.svg"],
       link: "https://hotwheelsx-frontend.onrender.com/",
@@ -73,7 +72,7 @@ export const navItems = [
     {
       id: 2,
       title: "Tiera E-Commerce Website",
-      des: "Build a static site for a business to enhance his online presence for Tiera Fashion an E-commerce site",
+      des: "Built a static e-commerce site for Tiera Fashion to strengthen their online presence and showcase their product catalog",
       img: "tiera.png",
       iconLists: ["/css.svg", "/html.svg","/js.svg"],
       link: "https://zeeshan2604.github.io/Tiera-E-Commerce-Website/",
@@ -90,94 +89,39 @@ export const navItems = [
     },
   ];
   
-  export const testimonials = [
-    {
-      quote:
-        "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-      name: "Michael Johnson",
-      title: "Director of AlphaStream Technologies",
-    },
-    {
-      quote:
-        "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-      name: "Michael Johnson",
-      title: "Director of AlphaStream Technologies",
-    },
-    {
-      quote:
-        "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-      name: "Michael Johnson",
-      title: "Director of AlphaStream Technologies",
-    },
-    {
-      quote:
-        "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-      name: "Michael Johnson",
-      title: "Director of AlphaStream Technologies",
-    },
-    {
-      quote:
-        "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-      name: "Michael Johnson",
-      title: "Director of AlphaStream Technologies",
-    },
-  ];
-  
-  export const companies = [
-    {
-      id: 1,
-      name: "cloudinary",
-      img: "/cloud.svg",
-      nameImg: "/cloudName.svg",
-    },
-    {
-      id: 2,
-      name: "appwrite",
-      img: "/app.svg",
-      nameImg: "/appName.svg",
-    },
-    {
-      id: 3,
-      name: "HOSTINGER",
-      img: "/host.svg",
-      nameImg: "/hostName.svg",
-    },
-    {
-      id: 4,
-      name: "stream",
-      img: "/s.svg",
-      nameImg: "/streamName.svg",
-    },
-    {
-      id: 5,
-      name: "docker.",
-      img: "/dock.svg",
-      nameImg: "/dockerName.svg",
-    },
-  ];
-  
   export const workExperience = [
     {
       id: 1,
-      title: "AI - ML Virtual Internship, by Google for Developers",
-      desc: "Hands-on experience in AI & ML with TensorFlow, Python, and more, earning a certification through guided projects and training",
-      className: "md:col-span-2",
-      thumbnail: "/exp1.svg",
+      role: "Software Development Engineer I",
+      company: "Yardi Software India Pvt Ltd",
+      period: "Nov 2025 – Present",
+      desc: "Develop and improve software products by diagnosing and resolving bugs, defects, and technical issues across the codebase",
+      thumbnail: "/yardi_software_india_pvt_ltd_logo.jfif",
     },
     {
       id: 2,
-      title: "VR Game Dev Intern at Avai Space",
-      desc: "Enhanced visual graphics by 30%, designed & modeled 3D assets, and collaborated cross-functionally to optimize user experience",
-      thumbnail: "/exp2.svg",
+      role: "AI/ML Virtual Intern",
+      company: "Google for Developers",
+      period: "2024",
+      desc: "Built hands-on AI & ML projects with TensorFlow and Python, earning certification through guided training and real-world assignments",
+      thumbnail: "/exp1.svg",
     },
     {
       id: 3,
-      title: "Full-Stack Web Dev Intern, by EY-GDS AICTE",
-      desc: "Developed a Car Rental System using Django, Python, and MySQL, handling both frontend and backend development",
-      className: "md:col-span-2",
+      role: "VR Game Development Intern",
+      company: "Avai Space",
+      period: "2024",
+      desc: "Improved visual graphics by 30%, designed and modeled 3D assets, and collaborated cross-functionally to optimize user experience",
+      thumbnail: "/exp2.svg",
+    },
+    {
+      id: 4,
+      role: "Full-Stack Web Development Intern",
+      company: "EY-GDS (AICTE)",
+      period: "2024",
+      desc: "Developed a Car Rental System using Django, Python, and MySQL, handling both frontend and backend development end to end",
       thumbnail: "/exp3.svg",
     },
-    
   ];
   
   

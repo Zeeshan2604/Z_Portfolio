@@ -7,8 +7,9 @@ import CosmicBackground from "@/components/ui/CosmicBackground";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Zeeshan Shaikh",
-  description: "Porfolio website of Zeeshan Shaikh the best freelance developer or programmer in thrissur",
+  title: "Zeeshan Shaikh | Full-Stack Developer",
+  description:
+    "Portfolio of Zeeshan Shaikh — Full-Stack Developer and Open Source enthusiast building modern web applications with React, Next.js, and Node.js.",
 };
 
 export default function RootLayout({
